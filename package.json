@@ -4,8 +4,7 @@
   "main": "index.js",
   "type":"module",
   "scripts": {
-    "start":"nodemon index.js",
-    "build":"npm i"
+    "start":"nodemon index.js"
   },
   "author": "Prince Raj",
   "license": "ISC",
