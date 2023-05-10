@@ -1,12 +1,15 @@
 import Questions from "../models/Questions.js"
 import mongoose from "mongoose"
+import User from '../models/auth.js'
 
 export const AskQuestion=async(req,res)=>{
     const postQuestionData=req.body;
     const postQuestion=new Questions(postQuestionData);
+    const b=req.body.userId
     try {
         await postQuestion.save();
         res.status(200).json("Posted a Question sucessfully..")
+        await User.findByIdAndUpdate({_id:b},{$push:{noofquestion:"noofquestion"}})
     } catch (error) {
         console.log(error);
         res.status(409).json("Couldn't post a question..")
@@ -40,8 +43,6 @@ export const voteQuestion=async(req,res)=>{
     const{id:_id}=req.params;
     const {value,userId}=req.body;
     
-    console.log(userId)
-    console.log(value)
     if(!mongoose.Types.ObjectId.isValid(_id)){
         return res.status(404).send('Question is unavailable...');
     }

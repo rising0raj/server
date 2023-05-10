@@ -6,7 +6,13 @@ const userSchema=mongoose.Schema({
     password:{type:String,required:true},
     about:{type:String},
     tags:{type:[String]},
-    joinedOn:{type:Date,default:Date.now}
+    joinedOn:{type:Date,default:Date.now},
+    opt:{type:String},
+    free:{type:[String],default:[]},
+    silver:{type:[String],default:[]},
+    gold:{type:[String],default:[]},
+    noofquestion:{type:[String],default:[]}
+    
 })
 
 export default mongoose.model("User",userSchema)
