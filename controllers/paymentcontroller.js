@@ -29,7 +29,7 @@ export const paymentVerify = async(req,res)=>{
 
     const isAuthpay= signature === razorpay_signature;
     if(isAuthpay){
-        res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`)
+        res.redirect(`https://stackoverflow-clone-by-httprising.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`)
     }
     else{
         res.status(200).json({sucess:false})
